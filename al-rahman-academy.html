@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="dbtp54eVyhsVWNUhqckl6n1jLRyyFVsiRNpAdbxT_xg" />
+  <title>Al-Rahman Education Campus</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #fafaf8;
+      --gold: #c9a84c;
+      --gold-light: #e8d08a;
+      --gold-pale: #f5ecd1;
+      --gray: #6b6b6b;
+      --gray-light: #e8e8e4;
+      --green: #1a3a2a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-light);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--green);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .nav-logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--black);
+      line-height: 1.15;
+    }
+    .nav-logo-name span { color: var(--gold); }
+
+    .nav-links { display: flex; align-items: center; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: var(--gray);
+      text-decoration: none; letter-spacing: 0.02em;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--black); }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      transition: background 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 4rem 6rem 4rem;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold);
+      background: var(--gold-pale); border-radius: 100px;
+      padding: 0.4rem 1rem; margin-bottom: 2rem; width: fit-content;
+    }
+    .hero-tag::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--gold); border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 4vw, 3.8rem);
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--green);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem; color: var(--gray);
+      line-height: 1.8; max-width: 460px;
+      margin-bottom: 2.8rem;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--green); color: var(--white);
+      border: none; border-radius: 8px;
+      padding: 0.9rem 2rem; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: transparent; color: var(--black);
+      border: 1.5px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 0.9rem 2rem; font-size: 0.95rem; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      transition: border-color 0.25s, transform 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { border-color: var(--black); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--gray-light);
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem; color: var(--green);
+    }
+    .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 0.2rem; }
+
+    /* Hero Right - Visual */
+    .hero-right {
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      padding: 4rem;
+      position: relative; overflow: hidden;
+      animation: fadeUp 1s 0.5s ease both;
+    }
+
+    .hero-right::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,168,76,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 380px; width: 100%;
+      backdrop-filter: blur(10px);
+      position: relative; z-index: 1;
+    }
+
+    .hero-card-badge {
+      background: var(--gold); color: var(--black);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; border-radius: 6px;
+      padding: 0.3rem 0.8rem; display: inline-block; margin-bottom: 1.5rem;
+    }
+
+    .hero-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem; color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .hero-card p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.65);
+      line-height: 1.7; margin-bottom: 1.8rem;
+    }
+
+    .courses-mini { display: flex; flex-direction: column; gap: 0.7rem; }
+    .course-item {
+      display: flex; align-items: center; gap: 0.8rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 0.75rem 1rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .course-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+    .course-name { font-size: 0.88rem; color: var(--white); font-weight: 500; }
+    .course-students { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+
+    /* ─── ABOUT ─── */
+    .section { padding: 7rem 4rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem; display: block;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.2; color: var(--black);
+      margin-bottom: 1.2rem;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--gray); line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      margin-top: 4rem;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-bg {
+      width: 100%; aspect-ratio: 4/5;
+      background: var(--green);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .about-img-bg svg { width: 60%; opacity: 0.15; fill: var(--gold); }
+
+    .about-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--gold-pale); border: 1px solid var(--gold);
+      border-radius: 14px; padding: 1.2rem 1.5rem;
+    }
+    .about-badge-num {
+      font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--green);
+    }
+    .about-badge-text { font-size: 0.82rem; color: var(--gray); }
+
+    .about-features { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+    .feature-row {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.2rem; border-radius: 12px;
+      border: 1px solid var(--gray-light);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .feature-row:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.12); }
+    .feature-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--gold-pale); display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .feature-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .feature-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+    /* ─── COURSES ─── */
+    .courses-section { background: #f4f4f0; }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+
+    .course-card {
+      background: var(--white); border-radius: 16px;
+      padding: 2rem; border: 1px solid var(--gray-light);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      border-color: var(--gold);
+    }
+    .course-card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--green); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.3rem;
+    }
+    .course-card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--black);
+    }
+    .course-card-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem; }
+    .course-card-meta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      font-size: 0.78rem; color: var(--gray);
+    }
+    .course-meta-item {
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .course-card-footer {
+      margin-top: 1.5rem; padding-top: 1.2rem;
+      border-top: 1px solid var(--gray-light);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .course-level {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--gold);
+      background: var(--gold-pale); border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+    }
+    .course-enroll {
+      font-size: 0.85rem; font-weight: 600; color: var(--green);
+      text-decoration: none; display: flex; align-items: center; gap: 0.3rem;
+    }
+    .course-enroll:hover { color: var(--gold); }
+
+    /* ─── WHY ─── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem; margin-top: 3.5rem;
+    }
+    .why-card {
+      text-align: center; padding: 2rem 1.5rem;
+      border-radius: 16px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .why-card:hover { background: var(--gold-pale); transform: translateY(-4px); }
+    .why-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem; color: var(--green); line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .why-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; }
+    .why-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section { background: var(--green); }
+    .testimonials-section .section-tag { color: var(--gold-light); }
+    .testimonials-section .section-title { color: var(--white); }
+    .testimonials-section .section-sub { color: rgba(255,255,255,0.65); }
+
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 2rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .testimonial-card:hover {
+      background: rgba(255,255,255,0.11);
+      border-color: rgba(201,168,76,0.5);
+    }
+    .testimonial-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+    .testimonial-text {
+      font-size: 0.93rem; color: rgba(255,255,255,0.8);
+      line-height: 1.8; margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testimonial-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: var(--black); font-size: 0.9rem; flex-shrink: 0;
+    }
+    .testimonial-name { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+    .testimonial-role { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+    /* ─── ADMISSIONS ─── */
+    .admissions-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start; margin-top: 4rem;
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      position: relative; padding-bottom: 2rem;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step-line {
+      position: absolute; left: 20px; top: 40px;
+      width: 1px; height: calc(100% - 10px);
+      background: var(--gray-light);
+    }
+    .step:last-child .step-line { display: none; }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      font-weight: 700; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .step-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+    .step-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+    .admission-form {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .admission-form h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 0.4rem; color: var(--black);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1px solid rgba(0,0,0,0.15); border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      background: var(--white); color: var(--black);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--green);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    /* ─── CONTACT ─── */
+    .contact-section { background: #f4f4f0; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start; margin-top: 4rem;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.2rem; background: var(--white);
+      border-radius: 12px; border: 1px solid var(--gray-light);
+    }
+    .contact-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: var(--green); display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-label { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .contact-value { font-size: 0.88rem; color: var(--gray); }
+
+    .map-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--green); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+    }
+    .map-placeholder svg { width: 60px; opacity: 0.3; fill: var(--white); }
+    .map-placeholder span { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); color: var(--white);
+      padding: 4rem 4rem 2rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo-name { color: var(--white); font-size: 1.2rem; }
+    .footer-brand p {
+      font-size: 0.87rem; color: rgba(255,255,255,0.5);
+      line-height: 1.7; margin-top: 1rem; max-width: 280px;
+    }
+    .footer-col h4 {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul a {
+      font-size: 0.87rem; color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem; color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 2rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 6rem 2rem 3rem; }
+      .hero-right { padding: 3rem 2rem; min-height: 400px; }
+      .about-grid, .admissions-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .courses-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .section { padding: 5rem 2rem; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .courses-grid, .why-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 12.27L4.26 11 12 6.73 19.74 11 12 15.27zM5 18.5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5V16l-7 3.82L5 16v2.5z"/></svg>
+      </div>
+      <span class="nav-logo-name">Al-<span>Rahman</span><br>Education Campus</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#admissions" class="nav-cta">Enroll Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Est. 1998 — Lahore, Pakistan</div>
+      <h1 class="hero-title">
+        Where <em>Knowledge</em><br>Meets Excellence
+      </h1>
+      <p class="hero-sub">
+        Al-Rahman Education Campus has been nurturing young minds since 1998 — providing expert coaching from Play Group all the way through Matric, with highly qualified faculty dedicated to every student's success.
+      </p>
+      <div class="hero-buttons">
+        <a href="#admissions" class="btn-primary">Apply for Admission</a>
+        <a href="#courses" class="btn-secondary">
+          <span>Explore Courses</span>
+          <span>→</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">2,400+</div>
+          <div class="stat-label">Students Enrolled</div>
+        </div>
+        <div>
+          <div class="stat-num">27+</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+        <div>
+          <div class="stat-num">Qualified</div>
+          <div class="stat-label">Faculty Members</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-badge">🎓 Play Group to Matric</div>
+        <h3>Begin Your Academic Journey</h3>
+        <p>From your child's very first steps in Play Group through to Matric board exams — we guide every student with care, skill, and dedication.</p>
+        <div class="courses-mini">
+          <div class="course-item">
+            <div class="course-icon">🌱</div>
+            <div>
+              <div class="course-name">Play Group & Nursery</div>
+              <div class="course-students">Early childhood foundation</div>
+            </div>
+          </div>
+          <div class="course-item">
+            <div class="course-icon">📖</div>
+            <div>
+              <div class="course-name">Primary (Grade 1–5)</div>
+              <div class="course-students">Core subjects & skills</div>
+            </div>
+          </div>
+          <div class="course-item">
+            <div class="course-icon">🔬</div>
+            <div>
+              <div class="course-name">Middle (Grade 6–8)</div>
+              <div class="course-students">Science, Maths & Language</div>
+            </div>
+          </div>
+          <div class="course-item">
+            <div class="course-icon">🏆</div>
+            <div>
+              <div class="course-name">Matric (Grade 9–10)</div>
+              <div class="course-students">Board exam preparation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="about-grid reveal">
+        <div class="about-img-wrap">
+          <div class="about-img-bg">
+            <svg viewBox="0 0 100 100"><path d="M50 10 L90 35 L90 65 L50 90 L10 65 L10 35 Z M50 20 L80 40 L80 60 L50 80 L20 60 L20 40 Z M50 30 Q65 40 65 50 Q65 60 50 70 Q35 60 35 50 Q35 40 50 30Z"/></svg>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-num">1998</div>
+            <div class="about-badge-text">Established in Lahore</div>
+          </div>
+        </div>
+        <div>
+          <span class="section-tag">About Us</span>
+          <h2 class="section-title">27 Years of Shaping Bright Futures</h2>
+          <p class="section-sub">Since 1998, Al-Rahman Education Campus has been Lahore's trusted educational institution — guiding students from Play Group all the way to Matric with passionate, highly qualified faculty.</p>
+          <div class="about-features">
+            <div class="feature-row">
+              <div class="feature-icon">🌱</div>
+              <div>
+                <div class="feature-title">Play Group to Matric</div>
+                <div class="feature-desc">We walk with every student from their very first day of school through their Matric board exams, providing consistent academic support at every level.</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-icon">👨‍🏫</div>
+              <div>
+                <div class="feature-title">Highly Qualified Faculty</div>
+                <div class="feature-desc">Our teachers are subject specialists with strong academic credentials and years of dedicated teaching experience, ensuring quality education at every stage.</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-icon">📊</div>
+              <div>
+                <div class="feature-title">Progress Monitoring</div>
+                <div class="feature-desc">Regular assessments, monthly tests, and parent-teacher feedback ensure every child is progressing and no one is left behind.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section class="section courses-section" id="courses">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Our Programs</span>
+        <h2 class="section-title">From Play Group to Matric</h2>
+        <p class="section-sub">We cover every stage of a child's early educational journey with dedicated programs and expert teachers.</p>
+      </div>
+      <div class="courses-grid">
+        <div class="course-card reveal">
+          <div class="course-card-icon">🌱</div>
+          <div class="course-card-title">Play Group & Nursery</div>
+          <div class="course-card-desc">A nurturing early learning environment that builds curiosity, communication, and a love of learning from the very start.</div>
+          <div class="course-card-meta">
+            <span class="course-meta-item">📅 1–2 Years</span>
+            <span class="course-meta-item">🎒 Ages 2–4</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-level">Early Years</span>
+            <a href="#admissions" class="course-enroll">Enroll →</a>
+          </div>
+        </div>
+        <div class="course-card reveal">
+          <div class="course-card-icon">🔤</div>
+          <div class="course-card-title">KG & Prep</div>
+          <div class="course-card-desc">Foundational literacy and numeracy skills introduced through interactive, activity-based learning methods.</div>
+          <div class="course-card-meta">
+            <span class="course-meta-item">📅 1–2 Years</span>
+            <span class="course-meta-item">🎒 Ages 4–6</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-level">Pre-Primary</span>
+            <a href="#admissions" class="course-enroll">Enroll →</a>
+          </div>
+        </div>
+        <div class="course-card reveal">
+          <div class="course-card-icon">📖</div>
+          <div class="course-card-title">Primary (Grade 1–5)</div>
+          <div class="course-card-desc">Core subjects including English, Urdu, Mathematics, Science, and Social Studies taught by specialist teachers.</div>
+          <div class="course-card-meta">
+            <span class="course-meta-item">📅 5 Years</span>
+            <span class="course-meta-item">🎒 Ages 6–11</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-level">Primary</span>
+            <a href="#admissions" class="course-enroll">Enroll →</a>
+          </div>
+        </div>
+        <div class="course-card reveal">
+          <div class="course-card-icon">🔬</div>
+          <div class="course-card-title">Middle School (Grade 6–8)</div>
+          <div class="course-card-desc">Deeper exploration of Science, Mathematics, Urdu, English, and Islamiat to prepare students for board-level study.</div>
+          <div class="course-card-meta">
+            <span class="course-meta-item">📅 3 Years</span>
+            <span class="course-meta-item">🎒 Ages 11–14</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-level">Middle</span>
+            <a href="#admissions" class="course-enroll">Enroll →</a>
+          </div>
+        </div>
+        <div class="course-card reveal">
+          <div class="course-card-icon">📚</div>
+          <div class="course-card-title">Matric Science (9–10)</div>
+          <div class="course-card-desc">Comprehensive board exam preparation in Biology, Chemistry, Physics, and Mathematics with regular mock tests.</div>
+          <div class="course-card-meta">
+            <span class="course-meta-item">📅 2 Years</span>
+            <span class="course-meta-item">🎒 Ages 14–16</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-level">Secondary</span>
+            <a href="#admissions" class="course-enroll">Enroll →</a>
+          </div>
+        </div>
+        <div class="course-card reveal">
+          <div class="course-card-icon">✏️</div>
+          <div class="course-card-title">Matric Arts (9–10)</div>
+          <div class="course-card-desc">Expert coaching in Urdu, English, Islamiat, Pakistan Studies, and General Mathematics for Arts students.</div>
+          <div class="course-card-meta">
+            <span class="course-meta-item">📅 2 Years</span>
+            <span class="course-meta-item">🎒 Ages 14–16</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-level">Secondary</span>
+            <a href="#admissions" class="course-enroll">Enroll →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section" id="why">
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
+        <span class="section-tag">Why Al-Rahman</span>
+        <h2 class="section-title">The Difference That Defines Us</h2>
+        <p class="section-sub">We don't just teach — we transform. Here's what sets us apart from every other coaching center.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-num">1998</div>
+          <div class="why-title">Established</div>
+          <div class="why-desc">Serving Lahore families with trusted, quality education for over 27 years.</div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">PG–10</div>
+          <div class="why-title">Complete Journey</div>
+          <div class="why-desc">One campus, one community — from Play Group to Matric, we cover every year of school.</div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">✔</div>
+          <div class="why-title">Qualified Faculty</div>
+          <div class="why-desc">Every teacher is a subject specialist with formal academic qualifications and genuine teaching experience.</div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">98%</div>
+          <div class="why-title">Board Pass Rate</div>
+          <div class="why-desc">Consistently top-performing Matric students in Punjab Board examinations year after year.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ADMISSIONS -->
+  <section class="section" id="admissions">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Admissions</span>
+        <h2 class="section-title">Join Al-Rahman Today</h2>
+        <p class="section-sub">Admissions are open for the new academic session. Secure your seat before we close registrations.</p>
+      </div>
+      <div class="admissions-grid">
+        <div class="reveal">
+          <h3 style="font-family:'DM Serif Display',serif; font-size:1.4rem; margin-bottom:1.5rem;">How to Apply</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-num">1</div>
+              <div>
+                <div class="step-title">Fill the Online Form</div>
+                <div class="step-desc">Complete the registration form on this page with your personal and academic details.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-num">2</div>
+              <div>
+                <div class="step-title">Assessment Test</div>
+                <div class="step-desc">Attend a short placement test at our campus to determine the best class group for you.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-num">3</div>
+              <div>
+                <div class="step-title">Confirm Enrollment</div>
+                <div class="step-desc">Submit your documents and fee to confirm your seat. Receive your student ID and schedule.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div>
+                <div class="step-title">Begin Your Journey</div>
+                <div class="step-desc">Start classes with our expert faculty. Your path to success begins here.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admission-form reveal">
+          <h3>Register Your Interest</h3>
+          <div class="form-group">
+            <label>Student Full Name</label>
+            <input type="text" placeholder="Enter full name" />
+          </div>
+          <div class="form-group">
+            <label>Parent / Guardian Name</label>
+            <input type="text" placeholder="Enter parent name" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="e.g. 0300-1234567" />
+          </div>
+          <div class="form-group">
+            <label>Select Program</label>
+            <select>
+              <option value="">-- Choose a Program --</option>
+              <option>Play Group</option>
+              <option>Nursery</option>
+              <option>KG / Prep</option>
+              <option>Primary (Grade 1–5)</option>
+              <option>Middle School (Grade 6–8)</option>
+              <option>Matric Science (Grade 9–10)</option>
+              <option>Matric Arts (Grade 9–10)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (Optional)</label>
+            <textarea placeholder="Any questions or special requirements..."></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%; text-align:center;" onclick="alert('Thank you! Our team will contact you shortly. 📞')">Submit Application</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Contact Us</span>
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-sub">Visit us at our campus or reach out through any of the channels below. We're always happy to help.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-items reveal">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Campus Address</div>
+              <div class="contact-value">Al-Rahman Education Campus, Lahore, Punjab, Pakistan</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone & WhatsApp</div>
+              <div class="contact-value">+92-300-0000000 &nbsp;|&nbsp; +92-42-0000000</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">Email Address</div>
+              <div class="contact-value">info@alrahmancampus.edu.pk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⏰</div>
+            <div>
+              <div class="contact-label">Campus Hours</div>
+              <div class="contact-value">Mon – Sat: 8:00 AM – 8:00 PM &nbsp;|&nbsp; Sunday: Closed</div>
+            </div>
+          </div>
+        </div>
+        <div class="map-placeholder reveal">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          <span>Al-Rahman Education Campus, Lahore</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#" style="margin-bottom:1rem; display:flex;">
+          <div class="nav-logo-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 12.27L4.26 11 12 6.73 19.74 11 12 15.27zM5 18.5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5V16l-7 3.82L5 16v2.5z"/></svg>
+          </div>
+          <span class="nav-logo-name" style="color:white; margin-left:0.7rem;">Al-<span>Rahman</span><br>Education Campus</span>
+        </a>
+        <p>Serving Lahore families since 1998 — nurturing students from Play Group through Matric with highly qualified faculty and a genuine commitment to every child's success.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#courses">Play Group & Nursery</a></li>
+          <li><a href="#courses">KG & Prep</a></li>
+          <li><a href="#courses">Primary (Grade 1–5)</a></li>
+          <li><a href="#courses">Middle School (Grade 6–8)</a></li>
+          <li><a href="#courses">Matric Science & Arts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Campus</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#why">Why Al-Rahman</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">WhatsApp Us</a></li>
+          <li><a href="#">Call Campus</a></li>
+          <li><a href="#">Email Us</a></li>
+          <li><a href="#contact">Find Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Al-Rahman Education Campus. All rights reserved.</span>
+      <span>Made with ❤️ in Lahore, Pakistan</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav active link highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? '#0a0a0a' : '';
+      });
+    });
+  </script>
+</body>
+</html>
